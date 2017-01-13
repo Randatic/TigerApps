@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import randatic.github.io.tigerapps.R;
 
 /**
- * Created by nell on 12/15/2016.
+ * Created by Randy Bruner on 12/15/2016.
  */
 
 public class SplashActivity extends AppCompatActivity {
@@ -32,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
             }
         };
 
+        timer.start();
     }
 
     private void endSplashScreen() {
