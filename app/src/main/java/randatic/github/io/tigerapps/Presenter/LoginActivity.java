@@ -20,6 +20,8 @@ import randatic.github.io.tigerapps.R;
  * Created by Randy Bruner on 1/19/2017.
  */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
+
+
     static final int PASSWORD_REQUESTED = 0;
     static final int ACCOUNT_CREATED = 1;
     static final String ACCOUNT = "created_account";
