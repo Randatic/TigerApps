@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="randatic.github.io.tigerapps">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,6 +19,16 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Presenter.LoginActivity"
+            android:label="@string/login"></activity>
+        <activity android:name=".Presenter.CreateAccountActivity"
+            android:label="@string/create_account"
+            android:parentActivityName="randatic.github.io.tigerapps.Presenter.LoginActivity" >
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="randatic.github.io.tigerapps.Presenter.LoginActivity" />
         </activity>
     </application>
 
