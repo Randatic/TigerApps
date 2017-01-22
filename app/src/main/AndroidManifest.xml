@@ -30,6 +30,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="randatic.github.io.tigerapps.Presenter.LoginActivity" />
         </activity>
+        <activity android:name=".Presenter.ForgotPasswordActivity"
+            android:label="@string/forgot_password"
+            android:parentActivityName=".Presenter.LoginActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="randatic.github.io.tigerapps.Presenter.LoginActivity"/>
+        </activity>
     </application>
 
 </manifest>
