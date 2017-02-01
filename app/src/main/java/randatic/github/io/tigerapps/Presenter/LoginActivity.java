@@ -26,6 +26,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     static final int ACCOUNT_CREATED = 1;
     static final String ACCOUNT = "created_account";
 
+    private boolean loggedIn;
+
     private EditText emailEditText, passwordEditText;
     private Button logInButton, forgotPasswordButton, createAccountButton;
 
@@ -33,8 +35,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         Backendless.initApp(this, "E11215CD-D330-8580-FFB1-982FAAFB6F00", "E181E341-2B7A-F352-FFE8-219DC2BC2200", "v1");
+
         wireWidgets();
+        loggedIn = true;
     }
 
     @Override
@@ -74,6 +79,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void handleResponse(BackendlessUser response) {
                     Toast.makeText(LoginActivity.this, "Login Successful.", Toast.LENGTH_SHORT).show();
+                    /*AsyncCallback<Boolean> isValidLoginCallBack = new AsyncCallback<Boolean>() {
+                        @Override
+                        public void handleResponse(Boolean response) {
+                            Toast.makeText(LoginActivity.this, "[ASYNC] Is login valid? - " + response, Toast.LENGTH_SHORT).show();
+                        }
+
+                        @Override
+                        public void handleFault(BackendlessFault fault) {
+                            Toast.makeText(LoginActivity.this, "Error - " + fault.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    };
+                    Backendless.UserService.isValidLogin(isValidLoginCallBack);*/
+                    loggedIn = true;
                 }
 
                 @Override
@@ -81,18 +99,16 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Toast.makeText(LoginActivity.this, ""+fault.getMessage(), Toast.LENGTH_SHORT).show();
                 }
             });
-            Backendless.UserService.isValidLogin(new AsyncCallback<Boolean>() {
-                @Override
-                public void handleResponse(Boolean response) {
-                    Toast.makeText(LoginActivity.this, "[ASYNC] Is login valid? - " + response, Toast.LENGTH_SHORT).show();
-                }
 
-                @Override
-                public void handleFault(BackendlessFault fault) {
-                    Toast.makeText(LoginActivity.this, "Error - " + fault.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
         }
+
+
+        if(loggedIn) {
+            Intent i = new Intent(this, MainActivity.class);
+            startActivity(i);
+            finish();
+        }
+
     }
 
     private void wireWidgets() {
