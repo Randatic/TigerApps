@@ -1,5 +1,6 @@
 package randatic.github.io.tigerapps.Presenter;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +32,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText emailEditText, passwordEditText;
     private Button logInButton, forgotPasswordButton, createAccountButton;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +50,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         int id = v.getId();
         Intent i = null;
         switch(id){
-            case(R.id.splash_button_login): login(); break;
+            case(R.id.splash_button_login):progressDialog.show(); login(); break;
             case(R.id.splash_button_forgot_password):
                 i = new Intent(this, ForgotPasswordActivity.class);
                 startActivityForResult(i,PASSWORD_REQUESTED); break;
@@ -73,6 +76,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void login() {
         if(emailEditText.getText().toString().trim().equals("") ||
                 passwordEditText.getText().toString().trim().equals("")) {
+            progressDialog.dismiss();
             Toast.makeText(this, R.string.empty_fields, Toast.LENGTH_SHORT).show();
         } else {
             Backendless.UserService.login(emailEditText.getText().toString().trim(), passwordEditText.getText().toString().trim(), new AsyncCallback<BackendlessUser>() {
@@ -102,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         }
 
-
+        progressDialog.dismiss();
         if(loggedIn) {
             Intent i = new Intent(this, MainActivity.class);
             startActivity(i);
@@ -122,6 +126,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         logInButton.setOnClickListener(this);
         forgotPasswordButton.setOnClickListener(this);
         createAccountButton.setOnClickListener(this);
+
+        progressDialog = new ProgressDialog(this);
+        progressDialog.setMessage("Logging in, please wait. . .");
     }
 
 

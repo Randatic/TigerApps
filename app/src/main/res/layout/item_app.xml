@@ -38,7 +38,7 @@
             tools:text="5"
             android:id="@+id/itemApp_textView_rating"
             android:layout_gravity="end"
-            android:gravity="center"
+            android:gravity="end"
             android:textSize="30sp"/>
 
     </LinearLayout>

@@ -17,9 +17,9 @@ import randatic.github.io.tigerapps.R;
  * Created by Randy Bruner on 1/31/2017.
  */
 
-public class AppAdapter extends ArrayAdapter<App> {
+public class AppListAdapter extends ArrayAdapter<App> {
 
-    public AppAdapter(Context context, List<App> apps) {
+    public AppListAdapter(Context context, List<App> apps) {
         super(context, 0, apps);
     }
 
@@ -37,7 +37,7 @@ public class AppAdapter extends ArrayAdapter<App> {
         TextView ratingTextView = (TextView) convertView.findViewById(R.id.itemApp_textView_rating);
 
         nameTextView.setText(app.getName());
-        descriptionTextView.setText(app.getDescription());
+        descriptionTextView.setText(app.getBriefDescription());
         ratingTextView.setText(""+app.getRating());
 
         return convertView;

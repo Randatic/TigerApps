@@ -25,7 +25,7 @@ public class AppListFragment extends ListFragment {
         apps = new ArrayList<App>();
         populateList();
 
-        AppAdapter adapter = new AppAdapter(getContext(), apps);
+        AppListAdapter adapter = new AppListAdapter(getContext(), apps);
         setListAdapter(adapter);
 
         return rootView;

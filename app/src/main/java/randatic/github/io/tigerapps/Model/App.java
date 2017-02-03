@@ -7,37 +7,40 @@ package randatic.github.io.tigerapps.Model;
 public class App {
 
     private String name;
+    private String briefDescription;
     private String description;
     private int rating;
 
-    public App(String name, String description, int rating) {
+    public App(String name, String briefDescription, int rating) {
         this.name = name;
-        this.description = description;
+        this.briefDescription = briefDescription;
         this.rating = rating;
+        description ="";
     }
 
     //Getters & Setters
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
-    public String getDescription() {
-        return description;
+    public String getBriefDescription() {
+        return briefDescription;
     }
-
-    public void setDescription(String description) {
-        this.description = description;
+    public void setBriefDescription(String briefDescription) {
+        this.briefDescription = briefDescription;
     }
-
     public int getRating() {
         return rating;
     }
-
     public void setRating(int rating) {
         this.rating = rating;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

@@ -21,5 +21,6 @@
     <string name="passwords_not_matching">Your passwords do not match!</string>
     <string name="home">Home</string>
     <string name="my_apps">My Apps</string>
+    <string name="install">Install</string>
 
 </resources>
